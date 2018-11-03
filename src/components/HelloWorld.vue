@@ -1,6 +1,9 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <div>
+      <button @click="onClick">click test</button>
+    </div>
     <p>
       For guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -36,6 +39,16 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 @Component
 export default class HelloWorld extends Vue {
   @Prop() private msg!: string;
+
+  onClick(): void {
+    this.axios.get('/test/getone', { 
+      params: {
+        one: 1111
+      }
+    }).then(response => {
+      alert(response.data)
+    })
+  }
 }
 </script>
 
